@@ -7,10 +7,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="albums")
-public class Album {
+@Table(name = "albums")
+public class Album
+{
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private long Id;
     @Column
@@ -26,35 +27,43 @@ public class Album {
     @JsonManagedReference
     private List<Song> songs;
 
-    public long getId() {
+    public long getId()
+    {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         Id = id;
     }
 
-    public String getTitle() {
+    public String getTitle()
+    {
         return Title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title)
+    {
         Title = title;
     }
 
-    public List<Artist> getArtist() {
+    public List<Artist> getArtist()
+    {
         return artist;
     }
 
-    public void setArtist(List<Artist> artist) {
+    public void setArtist(List<Artist> artist)
+    {
         this.artist = artist;
     }
 
-    public List<Song> getSongs() {
+    public List<Song> getSongs()
+    {
         return songs;
     }
 
-    public void setSongs(List<Song> songs) {
+    public void setSongs(List<Song> songs)
+    {
         this.songs = songs;
     }
 }

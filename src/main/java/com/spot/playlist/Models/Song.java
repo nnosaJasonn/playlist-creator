@@ -7,9 +7,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "songs")
-public class Song {
+public class Song
+{
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, columnDefinition = "INT(11) UNSIGNED")
     private long Id;
     @Column(nullable = false)
@@ -23,36 +24,44 @@ public class Song {
     @JsonBackReference
     private Album album;
 
-    public List<Artist> getArtists() {
+    public List<Artist> getArtists()
+    {
         return artists;
     }
 
-    public void setArtists(List<Artist> artists) {
+    public void setArtists(List<Artist> artists)
+    {
         this.artists = artists;
     }
 
 
-    public long getId() {
+    public long getId()
+    {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         Id = id;
     }
 
-    public String getTitle() {
+    public String getTitle()
+    {
         return Title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title)
+    {
         Title = title;
     }
 
-    public long getDurationInSeconds() {
+    public long getDurationInSeconds()
+    {
         return durationInSeconds;
     }
 
-    public void setDurationInSeconds(long durationInSeconds) {
+    public void setDurationInSeconds(long durationInSeconds)
+    {
         this.durationInSeconds = durationInSeconds;
     }
 }

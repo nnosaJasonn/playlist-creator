@@ -6,30 +6,30 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="artists")
+@Table(name = "artists")
 public class Artist
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, columnDefinition = "INT(11) UNSIGNED")
     private long Id;
     @Column(nullable = false)
     private String Name;
     @Column
     private String img;
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name="artists_albums",
-            joinColumns = {@JoinColumn(name="artist_id")},
-            inverseJoinColumns = {@JoinColumn(name="album_id")}
+            name = "artists_albums",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "album_id")}
     )
     @JsonManagedReference
     private List<Album> albums;
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name="artists_songs",
-            joinColumns = {@JoinColumn(name="artist_id")},
-            inverseJoinColumns = {@JoinColumn(name="song_id")}
+            name = "artists_songs",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "song_id")}
     )
     @JsonManagedReference
     private List<Song> songs;
@@ -37,51 +37,63 @@ public class Artist
     private String Genre;
 
 
-    public long getId() {
+    public long getId()
+    {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         Id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return Name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         Name = name;
     }
 
-    public List<Song> getSongs() {
+    public List<Song> getSongs()
+    {
         return songs;
     }
 
-    public void setSongs(List<Song> songs) {
+    public void setSongs(List<Song> songs)
+    {
         this.songs = songs;
     }
 
-    public String getImg() {
+    public String getImg()
+    {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(String img)
+    {
         this.img = img;
     }
 
-    public List<Album> getAlbums() {
+    public List<Album> getAlbums()
+    {
         return albums;
     }
 
-    public void setAlbums(List<Album> albums) {
+    public void setAlbums(List<Album> albums)
+    {
         this.albums = albums;
     }
 
-    public String getGenre() {
+    public String getGenre()
+    {
         return Genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(String genre)
+    {
         Genre = genre;
     }
 }
