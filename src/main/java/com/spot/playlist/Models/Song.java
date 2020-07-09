@@ -1,6 +1,7 @@
 package com.spot.playlist.Models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,23 +17,15 @@ public class Song
     @Column(nullable = false)
     private String Title;
     @ManyToMany(mappedBy = "songs")
-    @JsonBackReference
+    @JsonBackReference(value="artist-song")
+    @JsonIgnore
     private List<Artist> artists;
     @Column
     private long durationInSeconds;
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference("album-song")
+    @JsonIgnore
     private Album album;
-
-    public List<Artist> getArtists()
-    {
-        return artists;
-    }
-
-    public void setArtists(List<Artist> artists)
-    {
-        this.artists = artists;
-    }
 
 
     public long getId()

@@ -23,19 +23,39 @@ public class Artist
             joinColumns = {@JoinColumn(name = "artist_id")},
             inverseJoinColumns = {@JoinColumn(name = "album_id")}
     )
-    @JsonManagedReference
     private List<Album> albums;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "artists_songs",
             joinColumns = {@JoinColumn(name = "artist_id")},
             inverseJoinColumns = {@JoinColumn(name = "song_id")}
     )
-    @JsonManagedReference
     private List<Song> songs;
     @Column
     private String Genre;
 
+    public Artist()
+    {
+    }
+
+    public Artist(long id, String name, String img, String genre)
+    {
+        Id = id;
+        Name = name;
+        this.img = img;
+        Genre = genre;
+    }
+
+    public Artist(long id, String name, String img, List<Album> albums, List<Song> songs, String genre)
+    {
+        Id = id;
+        Name = name;
+        this.img = img;
+        this.albums = albums;
+        this.songs = songs;
+        Genre = genre;
+    }
 
     public long getId()
     {
@@ -57,15 +77,6 @@ public class Artist
         Name = name;
     }
 
-    public List<Song> getSongs()
-    {
-        return songs;
-    }
-
-    public void setSongs(List<Song> songs)
-    {
-        this.songs = songs;
-    }
 
     public String getImg()
     {
@@ -85,6 +96,16 @@ public class Artist
     public void setAlbums(List<Album> albums)
     {
         this.albums = albums;
+    }
+
+    public List<Song> getSongs()
+    {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs)
+    {
+        this.songs = songs;
     }
 
     public String getGenre()
